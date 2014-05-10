@@ -30,14 +30,10 @@ app.use(allowCrossDomain);
 
 //Test resource
 app.get('/test', function (req, res) {
-    tweetService.getTweet().then(function (text) {
-            res.send(text);
-        }, function (error) {
-            console.error(error);
-    });
+    res.send("Server says hi");
 });
 
-//get bus departures
+//search tweets by hashtag
 app.get('/tweets/:hashtag', function (request, response) {
     var query = request.params.hashtag;
 
