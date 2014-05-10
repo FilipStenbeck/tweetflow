@@ -1,7 +1,9 @@
-var express = require('express');
-var app = express();
-var TweetService = require('./TweetService');
-var tweetService = new TweetService(true);
+var express = require('express'),
+    app = express(),
+    TweetService = require('./tweetService'),
+    twitterConfig = require('./twitterConfig'),
+    tweetService = new TweetService(twitterConfig);
+
 
 /*********************************
 * Configure, allow cross domain 
@@ -30,7 +32,7 @@ app.use(allowCrossDomain);
 
 //Test resource
 app.get('/test', function (req, res) {
-    res.send("Server says hi");
+        res.send("Server says hi");
 });
 
 //search tweets by hashtag
@@ -43,7 +45,6 @@ app.get('/tweets/:hashtag', function (request, response) {
         console.error(error);
     });
 });
-
 
 app.listen(9000);
 
