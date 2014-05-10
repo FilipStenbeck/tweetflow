@@ -1,0 +1,15 @@
+{
+	"name": "tweetflow-server",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"author": "Filip Stenbeck <filip.stenbeck@gmail.com>",
+	"dependencies" : {
+		"express" : "3.x",
+    	"lodash" : "2.4.x",
+    	"q" : "1.0.1"
+	},
+	"devDependencies": {
+
+	}
+}
