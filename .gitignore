@@ -26,3 +26,9 @@ node_modules
 
 # Secret keys to twitter api
 backend/secret_keys.txt
+
+#Frontend dependecies
+bower_components
+frontend/react/node_modules
+frontend/react/app/bower_components
+frontend/react/test/bower_components

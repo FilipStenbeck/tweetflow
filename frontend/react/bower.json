@@ -1,0 +1,10 @@
+{
+  "name": "react",
+  "version": "0.0.0",
+  "dependencies": {
+    "requirejs": "~2.1.9",
+    "almond": "latest",
+    "react": "~0.5.1"
+  },
+  "devDependencies": {}
+}
