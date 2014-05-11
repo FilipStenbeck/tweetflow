@@ -3,11 +3,31 @@
 define(['tweetService'], function (tweetService) {
 
 	return React.createClass({
-
-		tweets : null,
+		//cached tweets
+		tweets : [],
 
 		getInitialState: function() {
 			return {}
+		},
+
+		updateTweet: function() {
+			var tweet;
+			//if we have cached tweets render the next
+			if (this.tweets.length) {
+				tweet = this.tweets.pop();
+				this.setState({
+					text: tweet.text,
+					display_name : tweet.display_name,
+					name : tweet.name,
+					avatar_url: tweet.avatar_url
+				});
+			//else get more tweets
+			} else {
+				console.log("get more tweets")
+				tweetService.getTweets('javascript', function(data, textStatus, jqXHR ) {
+					this.tweets = data;
+				}.bind(this));	
+			}
 		},
 
 		componentWillMount: function() {
@@ -21,6 +41,7 @@ define(['tweetService'], function (tweetService) {
 					name : tweet.name,
 					avatar_url: tweet.avatar_url
 				});
+				setInterval(this.updateTweet, this.props.updateInterval);
 			}.bind(this));
 		},
 
