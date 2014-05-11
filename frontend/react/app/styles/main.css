@@ -20,10 +20,10 @@ body {
 
 .twitter .user-name {
     font-weight: bold;
-   
 }
 
 .twitter .user-id {
     color :gray;
+    margin-left: 4px;
 }
 

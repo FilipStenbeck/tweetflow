@@ -1,9 +1,8 @@
 /** @jsx React.DOM */
 'use strict';
-define(['tweetService', 'tweet'], function (tweetService, Tweet) {
+define(['tweet'], function (Tweet) {
 	return React.createClass({
 		getInitialState: function() {
-			tweetService.getTweets();
 		},
 		render: function() {
 			return (
