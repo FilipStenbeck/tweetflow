@@ -4,7 +4,8 @@
 require.config({
 	baseUrl: 'scripts',
 	paths: {
-		react: 'script/react.min'
+		react: 'script/react.min',
+		jquery: '../bower_components/jquery/dist/jquery.min'
 	},
 	shim: {
 		react: {

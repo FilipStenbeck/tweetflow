@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 'use strict';
-define([], function () {
+define(['tweetService'], function (tweetService) {
 	return React.createClass({
 		getInitialState: function() {
 			return {message: 'This will be a tweet'};
