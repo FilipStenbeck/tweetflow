@@ -7,12 +7,16 @@ var express = require('express'),
     tweetService = new TweetService(twitterConfig),
     createResponse;
 
+
+/************************
+* Server configuration
+*************************/
+
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
-    // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
       res.send(200);
     }
@@ -23,7 +27,7 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 
-//Clean the response to get the values we want
+//Clean the response to get only the values we want
 createResponse = function (tweets) {
     var tweetList = tweets.statuses;
     if (!tweetList || tweetList.length === 0) {

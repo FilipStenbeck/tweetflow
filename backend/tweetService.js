@@ -53,7 +53,6 @@ TweetService = function(config) {
 		return deferred.promise; 
 	};
 
-	//Public API
 	return {
 		getTweet : function(query) {
 			if (config.offline) {
@@ -64,6 +63,5 @@ TweetService = function(config) {
 		}
 	};
 };
-
 
 module.exports = TweetService;
