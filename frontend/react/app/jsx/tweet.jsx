@@ -23,7 +23,6 @@ define(['tweetService'], function (tweetService) {
 				});
 			//else get more tweets
 			} else {
-				console.log("get more tweets")
 				tweetService.getTweets('javascript', function(data, textStatus, jqXHR ) {
 					this.tweets = data;
 				}.bind(this));	
@@ -32,6 +31,7 @@ define(['tweetService'], function (tweetService) {
 
 		componentWillMount: function() {
 			var tweet;
+			//Get tweets
 			tweetService.getTweets('javascript', function(data, textStatus, jqXHR ) {
 				this.tweets = data;
 				tweet = this.tweets[0];
@@ -41,12 +41,12 @@ define(['tweetService'], function (tweetService) {
 					name : tweet.name,
 					avatar_url: tweet.avatar_url
 				});
+				//Setup heartbeat
 				setInterval(this.updateTweet, this.props.updateInterval);
 			}.bind(this));
 		},
 
 		render: function() {
-			
 			return (	
 				<div className="twitter media">
 					<a className="pull-left" href="#">
