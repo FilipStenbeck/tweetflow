@@ -14,16 +14,21 @@ body {
     font-weight: 200;
     line-height: 30px;
     background-color: #eee;
-    padding: 60px;
+    padding: 30px;
     border-radius: 6px;
+    box-shadow: 1px 1px 1px #888888;
 }
 
 .twitter .user-name {
     font-weight: bold;
 }
 
+.twitter img {
+    width: 80px;
+}
+
 .twitter .user-id {
     color :gray;
-    margin-left: 4px;
+    margin-left: 8px;
 }
 

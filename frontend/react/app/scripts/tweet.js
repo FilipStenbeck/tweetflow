@@ -12,18 +12,19 @@ define(['tweetService'], function (tweetService) {
 
 		updateTweet: function() {
 			var tweet;
-			//if we have cached tweets render the next
+			console.log("heartbeat")
+			//if we have cached tweets render the next one
 			if (this.tweets.length) {
 				tweet = this.tweets.pop();
 				this.setState({
 					text: tweet.text,
 					display_name : tweet.display_name,
-					name : tweet.name,
+					name : '@' + tweet.name,
 					avatar_url: tweet.avatar_url
 				});
 			//else get more tweets
 			} else {
-				tweetService.getTweets('javascript', function(data, textStatus, jqXHR ) {
+				tweetService.getTweets(this.props.query, function(data, textStatus, jqXHR ) {
 					this.tweets = data;
 				}.bind(this));	
 			}
@@ -32,25 +33,24 @@ define(['tweetService'], function (tweetService) {
 		componentWillMount: function() {
 			var tweet;
 			//Get tweets
-			tweetService.getTweets('javascript', function(data, textStatus, jqXHR ) {
+			tweetService.getTweets(this.props.query, function(data) {
+				//Setup cache
 				this.tweets = data;
-				tweet = this.tweets[0];
-				this.setState({
-					text: tweet.text,
-					display_name : tweet.display_name,
-					name : tweet.name,
-					avatar_url: tweet.avatar_url
-				});
+				
+				//Update state
+				this.updateTweet();
+				
 				//Setup heartbeat
 				setInterval(this.updateTweet, this.props.updateInterval);
+
 			}.bind(this));
 		},
 
 		render: function() {
 			return (	
 				React.DOM.div( {className:"twitter media"}, 
-					React.DOM.a( {className:"pull-left", href:"#"}, 
-    				React.DOM.img( {className:"media-object", src:this.state.avatar_url, alt:this.state.name})
+					React.DOM.span( {className:"pull-left"}, 
+    				React.DOM.img( {className:"media-object", src:this.state.avatar_url})
   					),
 					  React.DOM.div( {className:"media-body"}, 
 					    React.DOM.h2( {className:"media-heading"}, 
