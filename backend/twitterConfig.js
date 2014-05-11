@@ -1,5 +1,6 @@
 module.exports = {
-  consumer_key: 'INSERT API KEY HERE',
-  consumer_secret: 'INSERT SECRET HERE',
-  application_only: true
+  consumer_key: 'UXLfngY1HNaRYAfBItuh7AsTJ',
+  consumer_secret: 'iMr4o7LMIUYUf8F2i4sJ4KGVubNraANO0ci8GMl70r2DDSckog',
+  application_only: true,
+  offline: false,
 }

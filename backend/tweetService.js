@@ -3,9 +3,14 @@
 * @return tweets as a promise 
 * 
 * @usage
-* Create a singelton by calling new TweetService(twitterConfig);
-* 1st argument a config object with consumer_key and consumer_secret
-* 2nd argument set to true for offline/mockdata (optional)
+* Create a module instance by calling new TweetService(twitterConfig);
+* Pass in  a config object 
+*	{
+*  		consumer_key: TWITTER_PUBLIC_API_KEY,
+*  		consumer_secret: TWITTER_SECRET_API_KEY,
+*  		application_only: true,
+*  		offline: false,
+*	}
 *
 ******************************************/
 
@@ -13,14 +18,14 @@ var Q = require('q'),
 	Twitter = require('mtwitter'), 
 	FS = require('fs'), TweetService;
 
-TweetService = function(config, offline) {
+TweetService = function(config) {
 	var twitter, getMockTweet, getTweetFromTwitter;
 
-	//Private stuff
+	//Setup Twitter connection settings
 	twitter = new Twitter({
   		consumer_key: config.consumer_key,
   		consumer_secret: config.consumer_secret,
-  		application_only: true
+  		application_only: config.application_only
 	});
 
 	getMockTweet = function (query) {
@@ -51,7 +56,7 @@ TweetService = function(config, offline) {
 	//Public API
 	return {
 		getTweet : function(query) {
-			if (offline) {
+			if (config.offline) {
 				return getMockTweet(query);
 			} else {
 				return getTweetFromTwitter(query);

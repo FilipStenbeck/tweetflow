@@ -1,10 +1,14 @@
 [
 	{
 		"text": "#html, #css3 and #javascript #experiments and #insight: http://t.co/IbsQAJvCZJ #jquery #js #data #json #development #i18n",
-		"user_name": "semtexui"
+		"user_name": "semtexui",
+		"display_name" : "Sam text",
+		"avatar_url" : "http://pbs.twimg.com/profile_images/378800000187295289/90c45485ec9e8ebf253618c414e05e7b_normal.png"
 	},	
 	{
 		"text": "@Laludmahally do you have any javascript errors?",
-        "user_name": "DomagojSalopek"
+        "user_name": "DomagojSalopek",
+        "display_name" : "Domagoj Salopek",
+		"avatar_url" : "http://pbs.twimg.com/profile_images/378800000187295289/90c45485ec9e8ebf253618c414e05e7b_normal.png"
     }
 ]

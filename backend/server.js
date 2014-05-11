@@ -1,13 +1,11 @@
 var express = require('express'),
+    Q = require('q'),
+    _ = require('lodash'),
     app = express(),
     TweetService = require('./tweetService'),
     twitterConfig = require('./twitterConfig'),
-    tweetService = new TweetService(twitterConfig);
-
-
-/*********************************
-* Configure, allow cross domain 
-**********************************/ 
+    tweetService = new TweetService(twitterConfig),
+    createResponse;
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -22,25 +20,36 @@ var allowCrossDomain = function(req, res, next) {
       next();
     }
 };
-
 app.use(allowCrossDomain);
+
+
+//Clean the response to get the values we want
+createResponse = function (tweets) {
+    var tweetList = tweets.statuses;
+    if (!tweetList || tweetList.length === 0) {
+        return [];
+    }
+    return _.map(tweetList, function(tweet) {
+        return  {
+            text : tweet.text,
+            name: tweet.user.name,
+            display_name : tweet.user.screen_name,
+            avatar_url : tweet.user.profile_image_url
+        };
+    });
+}
 
 /************************
 * REST endpoints
 *************************/
 
-
-//Test resource
-app.get('/test', function (req, res) {
-        res.send("Server says hi");
-});
-
 //search tweets by hashtag
 app.get('/tweets/:hashtag', function (request, response) {
     var query = request.params.hashtag;
 
-    tweetService.getTweet(query).then(function (text) {
-        response.send(text);
+    tweetService.getTweet(query).then(function (tweets) {
+        //response.send(tweets);
+        response.send(createResponse(tweets));
     }, function (error) {
         console.error(error);
     });
