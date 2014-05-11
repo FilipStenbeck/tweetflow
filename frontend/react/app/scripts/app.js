@@ -8,7 +8,7 @@ define(['tweet'], function (Tweet) {
 		render: function() {
 			return (
 				React.DOM.div( {className:"container"}, 
-				Tweet(null )
+					Tweet(null )
 				)
 			);
 		}

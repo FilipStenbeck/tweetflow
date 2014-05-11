@@ -8,7 +8,7 @@ define(['tweet'], function (Tweet) {
 		render: function() {
 			return (
 				<div className="container">
-				<Tweet />
+					<Tweet />
 				</div>
 			);
 		}

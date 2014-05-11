@@ -36,8 +36,8 @@ createResponse = function (tweets) {
     return _.map(tweetList, function(tweet) {
         return  {
             text : tweet.text,
-            name: tweet.user.name,
-            display_name : tweet.user.screen_name,
+            name: tweet.user.screen_name,
+            display_name : tweet.user.name,
             avatar_url : tweet.user.profile_image_url
         };
     });
@@ -59,9 +59,9 @@ app.get('/tweets/:hashtag', function (request, response) {
     });
 });
 
-app.listen(9000);
+app.listen(9999);
 
 console.log("");
 console.log("**********************************************");
-console.log('The server is listening on port 9000');
+console.log('The server is listening on port 9999');
 console.log("**********************************************");
