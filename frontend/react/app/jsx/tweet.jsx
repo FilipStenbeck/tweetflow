@@ -81,9 +81,9 @@ define(['tweetService'], function (tweetService) {
     				<img className="media-object" src={this.state.avatar_url}/>
   					</span>
 					  <div className="media-body">
-					    <h2 className="media-heading">
+					    <h1 className="media-heading">
 					    	{this.state.text}
-					    </h2>
+					    </h1>
 					    <span className="user-name">{this.state.display_name}
 					    	<span className="user-id ">{this.state.name}</span>
 					    </span> 

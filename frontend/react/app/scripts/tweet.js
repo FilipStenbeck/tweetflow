@@ -81,7 +81,7 @@ define(['tweetService'], function (tweetService) {
     				React.DOM.img( {className:"media-object", src:this.state.avatar_url})
   					),
 					  React.DOM.div( {className:"media-body"}, 
-					    React.DOM.h2( {className:"media-heading"}, 
+					    React.DOM.h1( {className:"media-heading"}, 
 					    	this.state.text
 					    ),
 					    React.DOM.span( {className:"user-name"}, this.state.display_name,
