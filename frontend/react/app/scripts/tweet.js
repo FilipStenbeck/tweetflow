@@ -6,15 +6,42 @@ define(['tweetService'], function (tweetService) {
 		//cached tweets
 		tweets : [],
 
+		//Animation css
+		animations : [
+			'shake animated',
+			'flip animated',
+			'tada animated',
+			'wobble animated',
+			'rubberBand animated',
+			'flip animated',
+			'wobble animated',
+			'rubberBand animated',
+			'tada animated',
+			'swing animated',
+			'flip animated',
+			'shake animated',
+			'pulse animated',
+			'tada animated',
+			'flip animated',
+			'rubberBand animated',
+		],
+
 		getInitialState: function() {
 			return {}
 		},
 
 		updateTweet: function() {
 			var tweet;
-			console.log("heartbeat")
+
 			//if we have cached tweets render the next one
 			if (this.tweets.length) {
+
+				//Update animation css
+				this.setState({
+					animate : 'twitter media ' + this.animations[this.tweets.length]
+				});
+
+				//get next tweet from cache
 				tweet = this.tweets.pop();
 				this.setState({
 					text: tweet.text,
@@ -22,6 +49,7 @@ define(['tweetService'], function (tweetService) {
 					name : '@' + tweet.name,
 					avatar_url: tweet.avatar_url
 				});
+
 			//else get more tweets
 			} else {
 				tweetService.getTweets(this.props.query, function(data, textStatus, jqXHR ) {
@@ -48,7 +76,7 @@ define(['tweetService'], function (tweetService) {
 
 		render: function() {
 			return (	
-				React.DOM.div( {className:"twitter media"}, 
+				React.DOM.div( {className:this.state.animate} , 
 					React.DOM.span( {className:"pull-left"}, 
     				React.DOM.img( {className:"media-object", src:this.state.avatar_url})
   					),
@@ -56,7 +84,9 @@ define(['tweetService'], function (tweetService) {
 					    React.DOM.h2( {className:"media-heading"}, 
 					    	this.state.text
 					    ),
-					    React.DOM.span( {className:"user-name"}, this.state.display_name,React.DOM.span( {className:"user-id"}, this.state.name)) 
+					    React.DOM.span( {className:"user-name"}, this.state.display_name,
+					    	React.DOM.span( {className:"user-id " }, this.state.name)
+					    ) 
 					  )
 				)
 			);
