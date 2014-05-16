@@ -35,19 +35,17 @@ define(['tweetService'], function (tweetService) {
 
 			//if we have cached tweets render the next one
 			if (this.tweets.length) {
-
-				//Update animation css
-				this.setState({
-					animate : 'twitter media ' + this.animations[this.tweets.length]
-				});
-
+	
 				//get next tweet from cache
 				tweet = this.tweets.pop();
+
+				//Set new state
 				this.setState({
 					text: tweet.text,
 					display_name : tweet.display_name,
 					name : '@' + tweet.name,
-					avatar_url: tweet.avatar_url
+					avatar_url: tweet.avatar_url,
+					animate : 'twitter media ' + this.animations[this.tweets.length]
 				});
 
 			//else get more tweets
