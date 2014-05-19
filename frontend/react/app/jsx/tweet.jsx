@@ -24,7 +24,7 @@ define(['tweetService', 'animation'], function (tweetService, animation) {
 					display_name : tweet.display_name,
 					name : '@' + tweet.name,
 					avatar_url: tweet.avatar_url,
-					animate : 'twitter media ' + animation.getName()
+					animate : 'twitter media ' + animation.getCssName()
 				});
 
 			//else get more tweets
@@ -47,7 +47,6 @@ define(['tweetService', 'animation'], function (tweetService, animation) {
 				
 				//Setup heartbeat
 				setInterval(this.updateTweet, this.props.updateInterval);
-
 			}.bind(this));
 		},
 

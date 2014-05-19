@@ -9,15 +9,18 @@ define([], function () {
 		'rubberBand animated',
 	];
 	lastId = -1;
+	
 	return {
-		//Get a new quote and make sure its a diffrent one than the last.  
-    	getName : function () {
-       		var newId = lastId;
-        	while (newId === lastId ) {
-          		newId = Math.floor(Math.random() * animations.length);
+		//Get a new animation css and make sure its a diffrent one than the last.  
+    	getCssName : function () {
+       		var newId = Math.floor(Math.random() * animations.length);
+        	if (newId !== lastId ) {
+          		lastId = newId; 
+      			return animations[lastId];
         	}
-        	lastId = newId; 
-      		return animations[lastId];
+        	else {
+        		this.getName();
+        	}
     	}	
 	}
 });
