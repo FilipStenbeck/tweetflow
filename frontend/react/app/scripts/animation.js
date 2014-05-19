@@ -19,7 +19,7 @@ define([], function () {
       			return animations[lastId];
         	}
         	else {
-        		this.getName();
+        		this.getCssName();
         	}
     	}	
 	}
