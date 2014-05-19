@@ -1,30 +1,10 @@
 /** @jsx React.DOM */
 'use strict';
-define(['tweetService'], function (tweetService) {
+define(['tweetService', 'animation'], function (tweetService, animation) {
 
 	return React.createClass({
 		//cached tweets
 		tweets : [],
-
-		//Animation css
-		animations : [
-			'shake animated',
-			'flip animated',
-			'tada animated',
-			'wobble animated',
-			'rubberBand animated',
-			'flip animated',
-			'wobble animated',
-			'rubberBand animated',
-			'tada animated',
-			'swing animated',
-			'flip animated',
-			'shake animated',
-			'pulse animated',
-			'tada animated',
-			'flip animated',
-			'rubberBand animated',
-		],
 
 		getInitialState: function() {
 			return {}
@@ -35,7 +15,6 @@ define(['tweetService'], function (tweetService) {
 
 			//if we have cached tweets render the next one
 			if (this.tweets.length) {
-	
 				//get next tweet from cache
 				tweet = this.tweets.pop();
 
@@ -45,7 +24,7 @@ define(['tweetService'], function (tweetService) {
 					display_name : tweet.display_name,
 					name : '@' + tweet.name,
 					avatar_url: tweet.avatar_url,
-					animate : 'twitter media ' + this.animations[this.tweets.length]
+					animate : 'twitter media ' + animation.getName()
 				});
 
 			//else get more tweets
