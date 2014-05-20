@@ -8,20 +8,44 @@
 </head>
 <body>
     <div id="mocha"></div>
-    <script src="bower_components/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
-    <script src="bower_components/chai/chai.js"></script>
+    <script src="../app/bower_components/requirejs/require.js"></script>
+    
     <script>
-        var assert = chai.assert;
-        var expect = chai.expect;
-        var should = chai.should();
+        require.config({
+            baseUrl: 'spec',
+                paths: {
+                    'mocha'         : '../bower_components/mocha/mocha',
+                    'chai'          : '../bower_components/chai/chai', 
+                    'animation'     : '../../app/scripts/animation',
+                    'tweet'         :   '../../app/scripts/tweet',
+                    'tweetService'  :   '../../app/scripts/tweetService',
+                    'jquery'        : '../../app/bower_components/jquery/dist/jquery.min',
+                    'react'         : '../../app/bower_components/react/react',
+                },
+                shim: {
+                    'mocha': {
+                        exports: 'mocha'
+                    },
+                    'react': {
+                        exports: 'React'
+                    }
+                }
+            });
+
+            require(['chai','mocha'], function(chai, mocha) {
+                var assert = chai.assert;
+                var expect = chai.expect;
+                var should = chai.should();
+
+                /*globals mocha */
+                mocha.setup('bdd');
+     
+            require([
+                'spec/test.js',
+            ], function(require) {
+                mocha.run();
+            });
+        });
     </script>
-
-    <!-- include source files here... -->
-
-    <!-- include spec files here... -->
-    <script src="spec/test.js"></script>
-
-    <script>mocha.run()</script>
 </body>
 </html>

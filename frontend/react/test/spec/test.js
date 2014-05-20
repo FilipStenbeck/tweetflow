@@ -1,13 +1,26 @@
 /* global describe, it */
 
-(function () {
-    'use strict';
+define(['animation'], function (animation) {
+  
+ 
+  describe('Tweetflow', function() {
 
-    describe('Give it some context', function () {
-        describe('maybe a bit more context here', function () {
-            it('should run here few assertions', function () {
+    describe('Animation', function() {
+      
+      it('should produce a css class name"', function() {
+        var sample =animation.getCssName();
+        
+        sample.should.be.a('string');
+        sample.should.not.equal('');
+      });
 
-            });
-        });
+      it('should not produce the same css class twice in a row"', function() {
+        var sample1 =animation.getCssName();
+        var sample2 =animation.getCssName();
+
+        sample1.should.not.equal(sample2);
+      });
     });
-})();
+  });
+ 
+});
