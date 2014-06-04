@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 'use strict';
-define(['tweetService', 'animation'], function (tweetService, animation) {
+define(['utils/tweetService', 'utils/animation'], function (tweetService, animation) {
 
 	return React.createClass({
 		//cached tweets
@@ -57,19 +57,19 @@ define(['tweetService', 'animation'], function (tweetService, animation) {
 
 		render: function() {
 			return (	
-				React.DOM.div( {className:this.state.animate, onClick:this.updateTweet} , 
-					React.DOM.span( {className:"pull-left"}, 
-    				React.DOM.img( {className:"media-object", src:this.state.avatar_url})
-  					),
-					  React.DOM.div( {className:"media-body"}, 
-					    React.DOM.h1( {className:"media-heading"}, 
-					    	this.state.text
-					    ),
-					    React.DOM.span( {className:"user-name"}, this.state.display_name,
-					    	React.DOM.span( {className:"user-id " }, this.state.name)
-					    ) 
-					  )
-				)
+				<div className={this.state.animate} onClick={this.updateTweet} >
+					<span className="pull-left">
+    				<img className="media-object" src={this.state.avatar_url}/>
+  					</span>
+					  <div className="media-body">
+					    <h1 className="media-heading">
+					    	{this.state.text}
+					    </h1>
+					    <span className="user-name">{this.state.display_name}
+					    	<span className="user-id ">{this.state.name}</span>
+					    </span> 
+					  </div>
+				</div>
 			);
 		}
 	});

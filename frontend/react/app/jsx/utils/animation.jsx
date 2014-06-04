@@ -11,7 +11,7 @@ define([], function () {
 	lastId = -1;
 	
 	return {
-		//Get a new animation css and make sure its a diffrent one than the last.  
+		//Get a new animation css and make sure its a diffrent one than the last
     	getCssName : function () {
        		var newId = Math.floor(Math.random() * animations.length);
         	if (newId !== lastId ) {

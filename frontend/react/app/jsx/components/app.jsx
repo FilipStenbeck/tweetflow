@@ -5,7 +5,7 @@
 */
 
 'use strict';
-define(['tweet','menu','appUtil'], function (Tweet, Menu, AppUtil) {
+define(['components/tweet','components/menu','utils/appUtil'], function (Tweet, Menu, AppUtil) {
 	return React.createClass({
 		
 		setNewQuery: function (event) {
@@ -32,10 +32,10 @@ define(['tweet','menu','appUtil'], function (Tweet, Menu, AppUtil) {
 
 		render: function() {
 			return (
-				React.DOM.div( {className:"container"}, 
-					Tweet( {query:this.state.query, updateInterval:this.state.updateInterval, force:this.state.force}),
-					Menu(null)
-				)
+				<div className="container">
+					<Tweet query={this.state.query} updateInterval={this.state.updateInterval} force={this.state.force}/>
+					<Menu/>
+				</div>
 			);
 		}
 	});

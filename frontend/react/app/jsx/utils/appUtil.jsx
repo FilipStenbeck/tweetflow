@@ -12,7 +12,7 @@ define([], function () {
 		},
 
 		createQueryChangedEvent: function (query) {
-			return new CustomEvent(AppUtil.QUERY_CHANGED, { 
+			return new CustomEvent(this.QUERY_CHANGED, { 
 		    	detail: {
 		      		query: query,
 		    	},

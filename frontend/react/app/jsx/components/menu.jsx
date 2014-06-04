@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 'use strict';
-define(['appUtil'], function (AppUtil) {
+define(['utils/appUtil'], function (AppUtil) {
 
 	return React.createClass({
 

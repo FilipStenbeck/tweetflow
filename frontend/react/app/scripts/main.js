@@ -14,7 +14,8 @@ require.config({
 	}
 });
 
-require(['app'], function (App) {
+//Main
+require(['components/app'], function (App) {
 	// use app here
 	React.renderComponent(
 		App(null ),
