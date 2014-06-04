@@ -12,6 +12,11 @@ define(['tweetService', 'animation'], function (tweetService, animation) {
 
 		updateTweet: function() {
 			var tweet;
+			//If force query update empty the tweet list 
+			if (this.props.force === true) {
+				this.tweets = [];
+				this.props.force = false;
+			}
 
 			//if we have cached tweets render the next one
 			if (this.tweets.length) {
@@ -52,7 +57,7 @@ define(['tweetService', 'animation'], function (tweetService, animation) {
 
 		render: function() {
 			return (	
-				React.DOM.div( {className:this.state.animate} , 
+				React.DOM.div( {className:this.state.animate, onClick:this.updateTweet} , 
 					React.DOM.span( {className:"pull-left"}, 
     				React.DOM.img( {className:"media-object", src:this.state.avatar_url})
   					),

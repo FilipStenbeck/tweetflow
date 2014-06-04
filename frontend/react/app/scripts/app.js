@@ -5,37 +5,36 @@
 */
 
 'use strict';
-define(['tweet'], function (Tweet) {
+define(['tweet','menu','appUtil'], function (Tweet, Menu, AppUtil) {
 	return React.createClass({
 		
-		getQueryParams: function (qs) {
-	    	var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
-	    	qs = qs.split("+").join(" ");
-
-	    	while (tokens = re.exec(qs)) {
-	        	params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
-	    	}
-
-	    	return params;
-		},
-
-		getInitialState: function() {
+		setNewQuery: function (event) {
+			this.setState({
+				query : event.detail.query,
+				force : true
+			});
 		},
 
 		componentWillMount: function() {
 			//Get params from url
-			var params = this.getQueryParams(document.location.search);
+			var params = AppUtil.getQueryParams(document.location.search);
 
 			this.setState({
 				updateInterval : params.interval || 5000,
-				query : params.query || "javascript"
+				query : params.query || "javascript",
+				force : false
 			});
+		},
+
+		componentDidMount: function () {
+  			this.getDOMNode().addEventListener(AppUtil.QUERY_CHANGED, this.setNewQuery);
 		},
 
 		render: function() {
 			return (
 				React.DOM.div( {className:"container"}, 
-					Tweet( {query:this.state.query, updateInterval:this.state.updateInterval})
+					Tweet( {query:this.state.query, updateInterval:this.state.updateInterval, force:this.state.force}),
+					Menu(null)
 				)
 			);
 		}
