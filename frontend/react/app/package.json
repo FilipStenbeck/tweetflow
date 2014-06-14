@@ -1,0 +1,14 @@
+{
+  "name": "tweetflow-webserver",
+  "version": "0.0.0",
+  "description": "",
+  "dependencies": {
+  	"express": "3.x"	
+  },
+  "main": "webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Filip Stenbeck",
+  "license": "BSD"
+}
