@@ -57,3 +57,18 @@ body {
     margin-left: 8px;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 600px) {    
+    .twitter {
+        width: 90%;
+        left: 33%;
+        top:5%;
+    }
+
+    .twitter h1 {
+        font-size: 16px;
+    }
+
+    .twitter img {
+        width: 35px;
+    }   
+}
