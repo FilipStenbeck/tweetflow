@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 'use strict';
-define(['utils/tweetService', 'utils/animation'], function (tweetService, animation) {
+define(['utils/tweetService', 'utils/animation', 'utils/appUtil'], function (tweetService, animation, appUtil) {
 
 	return React.createClass({
 		//cached tweets
@@ -25,7 +25,7 @@ define(['utils/tweetService', 'utils/animation'], function (tweetService, animat
 
 				//Set new state
 				this.setState({
-					text: tweet.text,
+					text: appUtil.formatText(tweet.text),
 					display_name : tweet.display_name,
 					name : '@' + tweet.name,
 					avatar_url: tweet.avatar_url,
@@ -63,7 +63,7 @@ define(['utils/tweetService', 'utils/animation'], function (tweetService, animat
   					</span>
 					  <div className="media-body">
 					    <h1 className="media-heading">
-					    	{this.state.text}
+					    	<div  dangerouslySetInnerHTML={{__html: this.state.text}}/>
 					    </h1>
 					    <span className="user-name">{this.state.display_name}
 					    	<span className="user-id ">{this.state.name}</span>

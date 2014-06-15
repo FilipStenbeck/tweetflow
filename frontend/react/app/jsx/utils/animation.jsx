@@ -23,7 +23,6 @@ define([], function () {
       			newId = Math.floor(Math.random() * animations.length);
         	}
           	lastId = newId; 
-          	console.log("ids", newId, lastId)
         	return animations[newId];
     	}	
 	}
