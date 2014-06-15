@@ -27,6 +27,7 @@ body {
 }
 
 .twitter {
+    font-family: 'Indie Flower', cursive;
     position: absolute;
     top: 25%;
     left: 45%;
@@ -35,10 +36,10 @@ body {
     font-size: 18px;
     font-weight: 200;
     line-height: 30px;
-    background-color: #eee;
     padding: 30px;
+    /* background-color: #eee;
     border-radius: 6px;
-    box-shadow: 1px 1px 1px #888888;
+    box-shadow: 1px 1px 1px #888888; */
     cursor: pointer;
 }
 
@@ -48,6 +49,7 @@ body {
 
 .twitter img {
     width: 80px;
+    border-radius: 50px;
 }
 
 .twitter .user-id {
