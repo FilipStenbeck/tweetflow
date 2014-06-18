@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="mocha"></div>
+    <script src="../app/bower_components/react/react-with-addons.js"></script>
     <script src="../app/bower_components/requirejs/require.js"></script>
     
     <script>
@@ -16,20 +17,18 @@
                 paths: {
                     'mocha'         : '../bower_components/mocha/mocha',
                     'chai'          : '../bower_components/chai/chai', 
-                    'animation'     : '../../app/scripts/utils/animation',
-                    'tweet'         :   '../../app/scripts/component/tweet',
-                    'tweetService'  :   '../../app/scripts/utils/tweetService',
-                    'appUtil'  :   '../../app/scripts/utils/appUtil', 
-                    'jquery'        : '../../app/bower_components/jquery/dist/jquery.min',
-                    'react'         : '../../app/bower_components/react/react',
+                    'utils/animation'     : '../../app/scripts/utils/animation',
+                    'tweet'         :   '../../app/scripts/components/tweet',
+                    'utils/tweetService'  :   '../../app/scripts/utils/tweetService',
+                    'utils/appUtil'  :   '../../app/scripts/utils/appUtil', 
+                    'jquery'        : '../../app/bower_components/jquery/dist/jquery.min'
+                    
                 },
                 shim: {
                     'mocha': {
                         exports: 'mocha'
-                    },
-                    'react': {
-                        exports: 'React'
                     }
+                   
                 }
             });
 

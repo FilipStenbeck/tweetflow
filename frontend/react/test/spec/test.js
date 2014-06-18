@@ -1,6 +1,7 @@
 /* global describe, it */
+/** @jsx React.DOM **/
 
-define(['animation', 'appUtil'], function (animation, appUtil) {
+define(['utils/animation', 'utils/appUtil', 'tweet'], function (animation, appUtil, Tweet) {
   
  
   describe('Tweetflow', function() {
@@ -49,7 +50,31 @@ define(['animation', 'appUtil'], function (animation, appUtil) {
         event.detail.query.should.equal('reactjs')
       });
 
+      it('It should create <a> elements for text containing http', function() {
+        var formated = appUtil.formatText("foobar http://foobar.com is awsesome")
+        formated.should.equal('foobar <a href="http://foobar.com" target="top">http://foobar.com</a> is awsesome');
+      });
+
+       it('It should create <a> elements for text containing https', function() {
+        var formated = appUtil.formatText("foobar https://foobar.com is awsesome")
+        formated.should.equal('foobar <a href="https://foobar.com" target="top">https://foobar.com</a> is awsesome');
+      });
     });
+    
+    describe('Tweet', function() {
+      
+      beforeEach(function() {
+        ReactTestUtils = React.addons.TestUtils;
+
+      });
+
+      it('initial state have a updateTweet function ', function() {
+        var tweet =  Tweet( {query:"foo", updateInterval:"15000"});
+        ReactTestUtils.renderIntoDocument(tweet);
+        tweet.updateTweet.should.not.equal(undefined);
+      });
+    }); 
+
   });
  
 });

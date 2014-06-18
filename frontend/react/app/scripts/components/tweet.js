@@ -42,6 +42,7 @@ define(['utils/tweetService', 'utils/animation', 'utils/appUtil'], function (twe
 
 		componentWillMount: function() {
 			var tweet;
+			
 			//Get tweets
 			tweetService.getTweets(this.props.query, function(data) {
 				//Setup cache
