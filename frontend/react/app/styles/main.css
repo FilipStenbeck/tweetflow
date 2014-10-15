@@ -2,6 +2,18 @@ body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+footer img {
+    float: right;
+    margin: 40px;
+    width: 140px;
+}
+#app {
+  flex: 1;
 }
 
 .show-menu {

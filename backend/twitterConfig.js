@@ -1,6 +1,6 @@
 module.exports = {
-  consumer_key: INSERT_TWITTER_PUBLIC_API_KEY,
-  consumer_secret: INSERT_TWITTER_SECRET_API_KEY,
+   consumer_key: 'UXLfngY1HNaRYAfBItuh7AsTJ',
+   consumer_secret: 'iMr4o7LMIUYUf8F2i4sJ4KGVubNraANO0ci8GMl70r2DDSckog',
   application_only: true,
   offline: false,
 }
